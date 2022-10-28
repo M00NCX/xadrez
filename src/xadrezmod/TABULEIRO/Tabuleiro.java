@@ -1,37 +1,63 @@
 package xadrezmod.TABULEIRO;
 
-public class Tabuleiro {
-    
-    private boolean [][]enderecos = new boolean[8][8];
-    public boolean checkEnderecos(int pogX, int pogY)
+public class Tabuleiro 
+{
+      private Enderecos end[][];
+  
+    public Tabuleiro() 
     {
-        if(getEnderecos()[pogX][pogY] == false)
+        this.end = new Enderecos[8][8];
+        for(int i = 0; i < 8; i++)
         {
-            System.out.println("A peca pode ser colocada nessa posicao!");
-            return true;
-        }
-        else
-        {
-            System.out.println("A peca nao pode ser colocada nessa posicao!");
-            return false;
+            for(int j = 0; j < 8; j++)
+            {
+                this.end[i][j] = new Enderecos();
+            }
         }
     }
 
+  public boolean checkEnd( int xi, int yi, int xf, int yf)
+  {
+     if(this.end[xf][yf].isOcupado() == false)
+     {
+         System.out.println("Movimento permitido");
+         return true;
+     }
+     else
+     {
+         if(this.end[xi][yi].getPeca().getColor() == this.end[xf][yf].getPeca().getColor())
+         {
+             System.out.println("Tentando comer o amigo??????????");
+             return false;
+         }
+         else
+         {
+             System.out.println("Vc capturou uma peca inimiga!");
+             return true;
+         }
+     }
+  }
     /**
-     * @return the enderecos
+     * @return the end
      */
-    public boolean[][] getEnderecos() {
-        return enderecos;
+    public Enderecos[][] getEnd() {
+        return end;
     }
 
     /**
-     * @param enderecos the enderecos to set
+     * @param end the end to set
      */
-    public void setEnderecos(boolean ocupado, int X, int Y)
+    public void setEnd(Peca peca, boolean ocup) 
     {
-        this.enderecos[X][Y] = ocupado;
-        System.out.println("DEU BOM");
+        System.out.println(peca.getPogX());
+        System.out.println(peca.getPogY());
+        this.end[peca.getPogX()][peca.getPogY()].setPeca(peca);
+        this.end[peca.getPogX()][peca.getPogY()].setOcupado(ocup);
     }
+      
+  
+}    
+
    /* public static Tabuleiro tabuleiro = new Tabuleiro ();
     int [][]square = new int[8][8]; //criação da matriz
     char a = 65; //letra a em ASCII
