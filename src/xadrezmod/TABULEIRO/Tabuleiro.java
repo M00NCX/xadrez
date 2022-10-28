@@ -49,8 +49,6 @@ public class Tabuleiro
      */
     public void setEnd(Peca peca, boolean ocup) 
     {
-        System.out.println(peca.getPogX());
-        System.out.println(peca.getPogY());
         this.end[peca.getPogX()][peca.getPogY()].setPeca(peca);
         this.end[peca.getPogX()][peca.getPogY()].setOcupado(ocup);
     }
