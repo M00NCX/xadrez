@@ -1,5 +1,7 @@
 
-package xadrezmod;
+package xadrezmod.TABULEIRO;
+
+import xadrezmod.PIECES.Peca;
 
 public class Enderecos
 {
@@ -12,7 +14,7 @@ public class Enderecos
         this.peca = null;
         
     }
-
+    
     /**
      * @return the ocupado
      */

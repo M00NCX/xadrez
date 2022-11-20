@@ -1,9 +1,13 @@
 package xadrezmod.TABULEIRO;
+import xadrezmod.PIECES.*;
 
 public class Tabuleiro 
 {
-      private Enderecos end[][];
-  
+    private Enderecos end[][];
+    private Color jogadorDaVez = Color.WHITE;
+    public static final int tempoDeMovimento = 20000; //20s para cada jogada
+    private Peca selecionada = null;
+    
     public Tabuleiro() 
     {
         this.end = new Enderecos[8][8];
@@ -15,28 +19,44 @@ public class Tabuleiro
             }
         }
     }
+    
+  public void selected(Peca peca){//clicando na peça
+      if(peca.isSelected()){
+          peca.setSelected(false);
+          this.selecionada = null;
+      }else{
+          peca.setSelected(true);
+          this.selecionada = peca;
+      }
+  }
 
   public boolean checkEnd( int xi, int yi, int xf, int yf)
   {
-     if(this.end[xf][yf].isOcupado() == false)
-     {
+     if(this.end[xf][yf].isOcupado() == false){
          System.out.println("Movimento permitido");
          return true;
      }
      else
      {
-         if(this.end[xi][yi].getPeca().getColor() == this.end[xf][yf].getPeca().getColor())
+         if(this.end[xi][yi].getPeca().getCor() == this.end[xf][yf].getPeca().getCor())
          {
              System.out.println("Tentando comer o amigo??????????");
              return false;
-         }
-         else
-         {
+         }else{
              System.out.println("Vc capturou uma peca inimiga!");
              return true;
          }
      }
-  }
+    }
+  
+ public void playerT(){//mudando de jogador
+     if(this.jogadorDaVez.equals(Color.WHITE)){
+         this.jogadorDaVez = Color.BLACK; 
+     }else{
+         this.jogadorDaVez = Color.WHITE;
+     }
+ }
+  
     /**
      * @return the end
      */
@@ -53,6 +73,7 @@ public class Tabuleiro
         this.end[peca.getPogX()][peca.getPogY()].setOcupado(ocup);
     }
       
+    
   
 }    
 
@@ -90,5 +111,3 @@ public class Tabuleiro
     public static void main(String [] args){			
         tabuleiro.printTab();	
     }*/
-    
-}

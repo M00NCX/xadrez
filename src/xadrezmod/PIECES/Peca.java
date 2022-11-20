@@ -1,18 +1,21 @@
 package xadrezmod.PIECES;
-import java.util.ArrayList;
 import xadrezmod.Movimentacao;
-import xadrezmod.Posicao;
+import xadrezmod.TABULEIRO. *;
 
-public class Peca {
+public abstract class Peca {
   
     Color cor;
     private int pogX;
     private int pogY;
-    private Movimentacao mov; 
-
-    /**
-     * @param color the color to set
-     */
+    private String imagem; //colocar imagem referente a cada peça
+    private Movimentacao mov;
+    private boolean selected = false;
+    private Tabuleiro tabuleiro;
+    
+    public abstract boolean movimento(int poginX, int poginY, int pogfinX, int pogfinY); //conferir movimento de cada peça
+    
+    //getters & setters
+    
     public void setColor(Color cor) {
         this.cor = cor;
     }
@@ -65,6 +68,34 @@ public class Peca {
     public Movimentacao getMov() {
         return mov;
     }
-    
+
+    /**
+     * @return the imagem
+     */
+    public String getImagem() {
+        return imagem;
+    }
+
+    /**
+     * @param imagem the imagem to set
+     */
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+        public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    public Tabuleiro getTabuleiro() {
+        return tabuleiro;
+    }
+
+    public void setTabuleiro(Tabuleiro tabuleiro) {
+        this.tabuleiro = tabuleiro;
+    }
     
 }

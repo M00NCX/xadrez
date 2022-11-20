@@ -1,20 +1,21 @@
 package xadrezmod;
 ////♔♕♗♘♙♖♚♛♝♞♟♜
 import java.util.Scanner;
-import xadrezmod.PIECES.Color;
-import xadrezmod.PIECES.Torre;
-import xadrezmod.TABULEIRO.Tabuleiro;
+import xadrezmod.PIECES.*;
+import xadrezmod.TABULEIRO.*;
+
 public class XadrezMod 
 {
         public static void main(String[] args) 
     {
+        
         int cfX;
         int cfY;
         Peca torre = new Torre();
-        torre.setColor('w');
+        torre.setColor(Color.WHITE);
         
         Peca sp = new Torre();
-        sp.setColor('b');
+        sp.setColor(Color.BLACK);
        
         Tabuleiro tab = new Tabuleiro();
         
@@ -39,7 +40,7 @@ public class XadrezMod
         sp.setPogY(cfY);
         tab.setEnd(sp, true);
         
-       if(torre.movimento(torre.getPogX(), torre.getPogY(), cfX, cfY))
+       if((torre.movimento(torre.getPogX(), torre.getPogY(), cfX, cfY)))
        {
            if(tab.checkEnd(torre.getPogX(),torre.getPogY(), cfX, cfY))
            {
