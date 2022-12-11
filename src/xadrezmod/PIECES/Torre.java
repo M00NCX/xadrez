@@ -1,15 +1,12 @@
 package xadrezmod.PIECES;
 
 public class Torre extends Peca{   
-
-    public Torre(int pogX, int pogY, Color cor) {
+    
+    public Torre(int pogX, int pogY, Color cor) {//OUTRO CONSTRUTOR
         this.setPogX(pogX);
         this.setPogY(pogY);
         this.setColor(cor);
-    }
-
-    public Torre() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.setImagem("D:\\img\\TORRE"+cor+".gif");
     }
     
     @Override
@@ -25,5 +22,9 @@ public class Torre extends Peca{
             System.out.println("Movimento ILEGAL");
             return false;
         }
+    }
+
+    public String getResource(String torrebrancOpng) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

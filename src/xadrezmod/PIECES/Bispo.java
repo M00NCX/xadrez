@@ -1,11 +1,12 @@
 package xadrezmod.PIECES;
 
 public class Bispo extends Peca{
-    
+       
     public Bispo (int pogX, int pogY, Color cor) {
         this.setPogX(pogX);
         this.setPogY(pogY);
         this.setColor(cor);
+        this.setImagem("D:\\img\\BISPO"+cor+".gif");
     }
     
     @Override

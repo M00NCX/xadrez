@@ -1,24 +1,43 @@
 package xadrezmod.TABULEIRO;
 import xadrezmod.PIECES.*;
 
-public class Tabuleiro 
+public final class Tabuleiro 
 {
-    private Enderecos end[][];
+    private Peca end[][];
     private Color jogadorDaVez = Color.WHITE;
     public static final int tempoDeMovimento = 20000; //20s para cada jogada
     private Peca selecionada = null;
     
     public Tabuleiro() 
     {
-        this.end = new Enderecos[8][8];
-        for(int i = 0; i < 8; i++)
-        {
-            for(int j = 0; j < 8; j++)
-            {
-                this.end[i][j] = new Enderecos();
-            }
-        }
+        this.end = new Peca[8][8];
+             
+        Torre torreW1 = new Torre(0, 0, Color.WHITE);
+        Torre torreW2 = new Torre(0, 7, Color.WHITE);
+        this.adiconaPeca(torreW1);
+        this.adiconaPeca(torreW2);
+        
+        Torre torreB1 = new Torre(7, 0, Color.BLACK);
+        Torre torreB2 = new Torre(7, 7, Color.BLACK);
+        this.adiconaPeca(torreB1);
+        this.adiconaPeca(torreB2);
+        
+        Bispo bispoB1 = new Bispo(7, 2, Color.BLACK);
+        Bispo bispoB2 = new Bispo(7, 5, Color.BLACK);
+        this.adiconaPeca(bispoB1);
+        this.adiconaPeca(bispoB2);
+        
+        Bispo bispoW1 = new Bispo(0, 2, Color.WHITE);
+        Bispo bispoW2 = new Bispo(0, 5, Color.WHITE);
+        this.adiconaPeca(bispoW1);
+        this.adiconaPeca(bispoW2);
+        
+
     }
+    
+  public Peca getEnd(int linha, int coluna){
+      return this.end[linha][coluna];      
+  }
     
   public void selected(Peca peca){//clicando na peça
       if(peca.isSelected()){
@@ -29,8 +48,13 @@ public class Tabuleiro
           this.selecionada = peca;
       }
   }
+  
+  public void adiconaPeca(Peca peca){
+      this.end[peca.getPogX()][peca.getPogY()] = peca;
+      peca.setTabuleiro(this);  
+  }
 
-  public boolean checkEnd( int xi, int yi, int xf, int yf)
+  /*public boolean checkEnd( int xi, int yi, int xf, int yf)
   {
      if(this.end[xf][yf].isOcupado() == false){
          System.out.println("Movimento permitido");
@@ -38,7 +62,7 @@ public class Tabuleiro
      }
      else
      {
-         if(this.end[xi][yi].getPeca().getCor() == this.end[xf][yf].getPeca().getCor())
+         if(this.end[xi][yi].get.getCor() == this.end[xf][yf].getPeca().getCor())
          {
              System.out.println("Tentando comer o amigo??????????");
              return false;
@@ -47,7 +71,7 @@ public class Tabuleiro
              return true;
          }
      }
-    }
+    }*/
   
  public void playerT(){//mudando de jogador
      if(this.jogadorDaVez.equals(Color.WHITE)){
@@ -60,18 +84,17 @@ public class Tabuleiro
     /**
      * @return the end
      */
-    public Enderecos[][] getEnd() {
+    public Peca[][] getEnd() {
         return end;
     }
 
     /**
-     * @param end the end to set
      */
-    public void setEnd(Peca peca, boolean ocup) 
+    /*public void setEnd(Peca peca, boolean ocup) 
     {
         this.end[peca.getPogX()][peca.getPogY()].setPeca(peca);
         this.end[peca.getPogX()][peca.getPogY()].setOcupado(ocup);
-    }
+    }*/
       
     
   

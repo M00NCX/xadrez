@@ -73,7 +73,7 @@ public abstract class Peca {
      * @return the imagem
      */
     public String getImagem() {
-        return imagem;
+        return this.imagem;
     }
 
     /**

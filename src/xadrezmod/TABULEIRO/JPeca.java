@@ -5,6 +5,7 @@
 package xadrezmod.TABULEIRO;
 import javax.swing.JLabel;
 import xadrezmod.PIECES.*;
+import javax.swing.*;
 
 /**
  *
@@ -15,13 +16,15 @@ public class JPeca extends JLabel{
 
     public JPeca(Peca peca) {
         this.peca = peca;
+        this.setIcon(new ImageIcon(peca.getImagem()));
     }
 
+    
     /**
      * @return the peca
      */
     public Peca getPeca() {
-        return peca;
+        return this.peca;
     }
 
     /**

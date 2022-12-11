@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package xadrezmod.TABULEIRO;
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.JPanel;
 
 /**
@@ -18,7 +20,17 @@ public class JCasa extends JPanel {
         this.i = i;
         this.j = j;
     }
-
+    
+    public JCasa(JPeca pecaJ){
+        this.pecaJ = pecaJ;
+        this.i=pecaJ.getPeca().getPogX();
+        this.j =pecaJ.getPeca().getPogY();
+        this.add(pecaJ);
+        if((pecaJ.getPeca() != null)&& (pecaJ.getPeca().isSelected())){
+            this.setBorder(BorderFactory.createLineBorder(Color.MAGENTA,4));
+        }
+    }
+   
     /**
      * @return the i
      */
