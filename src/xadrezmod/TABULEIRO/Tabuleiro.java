@@ -12,23 +12,23 @@ public final class Tabuleiro
     {
         this.end = new Peca[8][8];
              
-        Torre torreW1 = new Torre(0, 0, Color.WHITE);
-        Torre torreW2 = new Torre(0, 7, Color.WHITE);
+        Peca torreW1 = new Torre(0, 0, Color.WHITE);
+        Peca torreW2 = new Torre(0, 7, Color.WHITE);
         this.adiconaPeca(torreW1);
         this.adiconaPeca(torreW2);
         
-        Torre torreB1 = new Torre(7, 0, Color.BLACK);
-        Torre torreB2 = new Torre(7, 7, Color.BLACK);
+        Peca torreB1 = new Torre(7, 0, Color.BLACK);
+        Peca torreB2 = new Torre(7, 7, Color.BLACK);
         this.adiconaPeca(torreB1);
         this.adiconaPeca(torreB2);
         
-        Bispo bispoB1 = new Bispo(7, 2, Color.BLACK);
-        Bispo bispoB2 = new Bispo(7, 5, Color.BLACK);
+        Peca bispoB1 = new Bispo(7, 2, Color.BLACK);
+        Peca bispoB2 = new Bispo(7, 5, Color.BLACK);
         this.adiconaPeca(bispoB1);
         this.adiconaPeca(bispoB2);
         
-        Bispo bispoW1 = new Bispo(0, 2, Color.WHITE);
-        Bispo bispoW2 = new Bispo(0, 5, Color.WHITE);
+        Peca bispoW1 = new Bispo(0, 2, Color.WHITE);
+        Peca bispoW2 = new Bispo(0, 5, Color.WHITE);
         this.adiconaPeca(bispoW1);
         this.adiconaPeca(bispoW2);
         
@@ -51,6 +51,12 @@ public final class Tabuleiro
   
   public void adiconaPeca(Peca peca){
       this.end[peca.getPogX()][peca.getPogY()] = peca;
+      peca.setTabuleiro(this);  
+  }
+    
+  public void remvovePeca(Peca peca)
+  {
+      this.end[peca.getPogX()][peca.getPogY()] = null;
       peca.setTabuleiro(this);  
   }
 
